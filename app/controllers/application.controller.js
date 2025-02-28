@@ -127,7 +127,7 @@ const create = async (req, res) => {
 const getApplications = async (req, res) => {
     try {
       const applications = await Application.findAll({
-        attributes: ['firstName','lastName', 'email', 'phone', 'dateOfBirth', 'zipCode', 'created_at'],
+        attributes: ['firstName','lastName', 'email', 'phone', 'dateOfBirth', 'zipCode', 'createdAt'],
         raw: true, // Return plain objects
       });
   
