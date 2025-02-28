@@ -37,11 +37,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isValidZip(value) {
-            if (!(/^\d{5}$/.test(value) || /^\d{5}-\d{4}$/.test(value))) {
-              throw new Error('Invalid ZIP code format. Must be 5 digits or 5 digits with optional 4 digit extension');
-            }
-          }
+          is: /^\d{5}(-\d{4})?$/,
+          notEmpty: true
         }
       },
       hasChronicConditions: {

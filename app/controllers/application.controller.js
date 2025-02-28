@@ -123,4 +123,27 @@ const create = async (req, res) => {
     }
 };
 
-module.exports = { create };
+
+const getApplications = async (req, res) => {
+    try {
+      const applications = await Application.findAll({
+        attributes: ['firstName','lastName', 'email', 'phone', 'dateOfBirth', 'zipCode', 'created_at'],
+        raw: true, // Return plain objects
+      });
+  
+      return res.status(200).json({
+        success: true,
+        message: "Application created successfully",
+        data: applications
+    });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            error: error.message
+        });
+    }
+  }
+  
+
+module.exports = { create, getApplications };
